@@ -1,19 +1,26 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
+
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   entry: "./index.js",
+  mode: isProd ? 'production' : 'development',
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: "index.js",
     libraryTarget: 'umd'
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['.js', '.json'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      '~@': path.resolve(__dirname, 'node_modules')
+    }
   },
   module: {
-    loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
     ]
   },
   plugins: [
