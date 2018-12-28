@@ -1,0 +1,22 @@
+StoryScript {
+  // todo
+  const = "const"
+  let = "let"
+
+  True = "true"
+  False = "false"
+
+  Operation
+    = "[" command content "]" -- formatA
+    | "[" command "]" -- formatB
+
+  command = "todo"
+
+  content = "todo"
+
+  IF = "if"
+
+  ELSE = "else"
+
+  END = "end"
+}
